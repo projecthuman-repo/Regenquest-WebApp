@@ -1,5 +1,6 @@
 import { createTheme } from "@mui/material/styles";
 
+
 const theme = createTheme({
     components: {
         MuiAppBar: {
@@ -37,11 +38,26 @@ const theme = createTheme({
                     justifyContent: 'end'
                 }
             }
-        }
+        },
+        MuiSkeleton:{ //not working
+            styleOverrides: {
+                root: {
+                    variant: 'rounded',
+                    animation: '{false}'
+
+                }
+            }
+        },
+        
     },
     typography: {
-        fontFamily: 'Poppins'
-    }
+        fontFamily: 'Poppins',
+        button: {
+            textTransform: 'none',
+            color: "black"
+        }
+    },
+   
 });
 
 export default theme;

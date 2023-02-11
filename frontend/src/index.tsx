@@ -8,60 +8,58 @@ import "./index.css";
 import TaskCard from "./components/TaskCard";
 import { Login } from "./pages/Login";
 import { Coop } from "./pages/Coop";
+import CoopSkeleton from "./components/CoopSkeleton";
 
 const root = ReactDOM.createRoot(
-	document.getElementById("root") as HTMLElement
+  document.getElementById("root") as HTMLElement
 );
 
 const router = createBrowserRouter([
-	{
-		path: "/",
-		element: (
-			<>
-				<TaskCard
-					name="Task Name"
-					community="Community Name"
-					location="Location"
-					description="Some text here"
-					type="small"
-				/>
-				<TaskCard
-					name="Task Name"
-					community="Community Name"
-					location="Location"
-					description="Some text here"
-					type="large"
-				/>
-			</>
-		),
-	},
-	{
-		path: "/home",
-		element: (
-			<div>
-				<b>Home</b>
-			</div>
-		),
-	},
-	{
-		path: "/login",
-		element: (
-			<Login />
-		),
-	},
-	{
-		path: "/Coop",
-		element: (
-			<Coop />
-		),
-	},
+  {
+    path: "/",
+    element: (
+      <>
+        <TaskCard
+          name="Task Name"
+          community="Community Name"
+          location="Location"
+          description="Some text here"
+          type="small"
+        />
+        <TaskCard
+          name="Task Name"
+          community="Community Name"
+          location="Location"
+          description="Some text here"
+          type="large"
+        />
+        {/* <CoopSkeleton type={3} /> */}
+      </>
+    ),
+  },
+  {
+    path: "/home",
+    element: (
+      <div>
+        <b>Home</b>
+      </div>
+    ),
+  },
+  {
+    path: "/login",
+    element: <Login />,
+  },
+  {
+    path: "/Coop",
+    element: <Coop />,
+  },
 ]);
 
 root.render(
-	<React.StrictMode>
-		<ThemeProvider theme={theme}>
-			<Toolbar />
-			<RouterProvider router={router} />
-		</ThemeProvider>
-	</React.StrictMode>
+  <React.StrictMode>
+    <ThemeProvider theme={theme}>
+      <Toolbar />
+      <RouterProvider router={router} />
+    </ThemeProvider>
+  </React.StrictMode>
 );
