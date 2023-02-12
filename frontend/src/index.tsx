@@ -8,7 +8,6 @@ import "./index.css";
 import TaskCard from "./components/TaskCard";
 import { Login } from "./pages/Login";
 import { Coop } from "./pages/Coop";
-import CoopSkeleton from "./components/CoopSkeleton";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -33,7 +32,6 @@ const router = createBrowserRouter([
           description="Some text here"
           type="large"
         />
-        {/* <CoopSkeleton type={3} /> */}
       </>
     ),
   },
