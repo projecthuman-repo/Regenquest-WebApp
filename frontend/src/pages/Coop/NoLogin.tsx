@@ -1,54 +1,64 @@
 import React from "react";
-import TaskCard from "../../components/TaskCard";
 import Typography from "@mui/material/Typography";
 import Skeleton from "@mui/material/Skeleton";
 import Button from "@mui/material/Button";
+import styled from "@emotion/styled";
+
+const Page = styled.div({
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  flexDirection: "column",
+  padding: 50,
+});
+
+const Container = styled.div({});
+
+const BottomContent = styled.div({
+  display: "flex",
+  justifyContent: "space-between",
+});
+
+const BottomLeftContent = styled.div({
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "end",
+});
+
+const TextContainer = styled.div({
+  width: 500,
+});
+
+const ButtonContainer = styled.div({
+  display: "flex",
+  paddingTop: 40,
+  justifyContent: "end",
+});
+
+const MoreButton = styled(Button)({
+  backgroundColor: "#D9D9D9",
+  color: "black",
+  fontWeight: 700,
+  textTransform: "none",
+  fontSize: 16,
+  borderRadius: 30,
+  width: 188,
+});
 
 function Coop() {
   return (
-    <div //page container
-      style={{
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        flexDirection: "column",
-        padding: 50,
-      }}
-    >
-      <div //content container
-        style={{}}
-      >
-        <div
-          style={{
-            marginBottom: 20,
-          }}
-        >
-          <Skeleton
-            variant="rounded"
-            animation={false}
-            width={1209}
-            height={407}
-          />
-        </div>
-
-        <div //bottom half of content container
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-          }}
-        >
-          <div //left bottom of content container
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "end",
-            }}
-          >
-            <div //container for left texts
-              style={{
-                width: 500,
-              }}
-            >
+    <Page>
+      <Container>
+        <Skeleton
+          variant="rounded"
+          animation={false}
+          width={1209}
+          height={407}
+          style={{ marginBottom: 20 }}
+        />
+        <BottomContent>
+          <BottomLeftContent>
+            <TextContainer>
               <Typography variant="h1">
                 <b>Co-ops...</b>
               </Typography>
@@ -61,50 +71,28 @@ function Coop() {
                 nulla pariatur. Excepteur sint occaecat cupidatat non proident,
                 sunt in culpa qui officia deserunt mollit anim id est laborum.
               </Typography>
-            </div>
-            <div>
-              <Skeleton
-                variant="rounded"
-                animation={false}
-                width={567}
-                height={505}
-              />
-            </div>
-          </div>
-          <div>
+            </TextContainer>
             <Skeleton
               variant="rounded"
               animation={false}
-              width={625}
-              height={1011}
+              width={567}
+              height={505}
             />
-          </div>
-        </div>
-        <div
-          style={{
-            display: "flex",
-            paddingTop: 40,
-            justifyContent: "end",
-          }}
-        >
-          <Button
-            variant="contained"
-            disableElevation
-            style={{
-              backgroundColor: "#D9D9D9",
-              color: "black",
-              fontWeight: 700,
-              textTransform: "none",
-              fontSize: 16,
-              borderRadius: 30,
-              width: 188,
-            }}
-          >
+          </BottomLeftContent>
+          <Skeleton
+            variant="rounded"
+            animation={false}
+            width={625}
+            height={1011}
+          />
+        </BottomContent>
+        <ButtonContainer>
+          <MoreButton variant="contained" disableElevation>
             More..
-          </Button>
-        </div>
-      </div>
-    </div>
+          </MoreButton>
+        </ButtonContainer>
+      </Container>
+    </Page>
   );
 }
 
