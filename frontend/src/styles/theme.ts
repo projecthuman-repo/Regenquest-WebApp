@@ -39,22 +39,20 @@ const theme = createTheme({
                 }
             }
         },
-        MuiSkeleton:{ //not working
-            styleOverrides: {
-                root: {
+        MuiSkeleton:{ 
+            defaultProps: {
+
                     variant: 'rounded',
-                    animation: '{false}'
+                    animation: false
 
                 }
             }
-        },
         
     },
     typography: {
         fontFamily: 'Poppins',
         button: {
             textTransform: 'none',
-            color: "black"
         }
     },
    
