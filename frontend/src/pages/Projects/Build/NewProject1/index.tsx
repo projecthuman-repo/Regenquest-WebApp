@@ -5,6 +5,8 @@ import TextField from "@mui/material/TextField";
 import { RadioGroupField } from "../../ProjectComponents/RadioGroupField";
 import HashtagSearch from "../../ProjectComponents/HashtagSearch";
 
+
+
 type StyledTextFieldProps = {
     label: string;
     placeholder: string;
@@ -34,7 +36,7 @@ const TitleField = styled(Typography)({
     textAlign: "center",
 });
 
-const ProjectBasicInformation = () => {
+const NewProject1 = () => {
     const [categories, setCategories] = useState<string[]>([]); // State of all program types fetched
     const [hashtags, setHashtags] = useState<string[]>([]);
 
@@ -103,12 +105,12 @@ const ProjectBasicInformation = () => {
 
     return (
         <ContentView>
-            <TitleField>Basic Information</TitleField>
+            <TitleField>New Project</TitleField>
 
             <StyledTextField
                 label="Project name"
                 fullWidth
-                placeholder="Name your project"
+                placeholder="Input"
                 value={projectName}
                 onChange={handleNameChange}
                 InputLabelProps={{
@@ -168,7 +170,6 @@ const ProjectBasicInformation = () => {
                     rows={4}
                 />
 
-                <HashtagSearch hashtags={hashtags} />
                 <RadioGroupField
                     label="Is this a initiative or charity project?"
                     name="initiative-radio-btn-group"
@@ -195,21 +196,103 @@ const ProjectBasicInformation = () => {
                     onChange={handleInitiativeChange}
                 />
 
+                <TextField
+                    label="Search Location of Installation"
+                    placeholder="Search"
+                    multiline
+                    rows={1}
+                    style={{ marginTop: 28 }}
+                    InputLabelProps={{
+                        shrink: true,
+                        style: { color: "black" },
+                    }}
+                    InputProps={{
+                        inputMode: "text",
+                    }}
+                    onChange={handleInitiativeChange}
+                />
                 <RadioGroupField
-                    label="Who can participate in this project?"
+                    label="Expected Lifecycle of Installation:"
                     name="participate-radio-btn-group"
                     options={[
-                        { value: "public", label: "Anyone (Public)" },
+                        { value: "permanent", label: "Permanent" },
                         {
-                            value: "private",
-                            label: "By Invite only (Private)",
+                            value: "temporary",
+                            label: "Temporary",
                         },
                     ]}
                     onChange={handleParticipationChange}
                 />
 
                 <RadioGroupField
-                    label="Do you have experience in project planning"
+                    label="Do you own the building space?"
+                    name="experience-radio-btn-group"
+                    options={[
+                        { value: "yes", label: "Yes" },
+                        { value: "no", label: "No" },
+                    ]}
+                    onChange={handleExperienceChange}
+                />
+                <StyledTextField
+                    label="Additional Information for Rentals"
+                    fullWidth
+                    placeholder="Add infromation"
+                    value={projectName}
+                    onChange={handleNameChange}
+                    InputLabelProps={{
+                        shrink: true,
+                    }}
+                />
+                <StyledTextField
+                    label="Items"
+                    fullWidth
+                    placeholder="Input"
+                    value={projectName}
+                    onChange={handleNameChange}
+                    InputLabelProps={{
+                        shrink: true,
+                    }}
+                />
+                <StyledTextField
+                    label="Estimated Costs"
+                    fullWidth
+                    placeholder="xxxx"
+                    value={projectName}
+                    onChange={handleNameChange}
+                    InputLabelProps={{
+                        shrink: true,
+                    }}
+                />
+                <StyledTextField
+                    label="Estimated Total Costs"
+                    fullWidth
+                    placeholder="xxxx"
+                    value={projectName}
+                    onChange={handleNameChange}
+                    InputLabelProps={{
+                        shrink: true,
+                    }}
+                />
+                <RadioGroupField
+                    label="Open to bartering?"
+                    name="experience-radio-btn-group"
+                    options={[
+                        { value: "yes", label: "Yes" },
+                        { value: "no", label: "No" },
+                    ]}
+                    onChange={handleExperienceChange}
+                />
+                <RadioGroupField
+                    label="Crowdfund operating costs??"
+                    name="experience-radio-btn-group"
+                    options={[
+                        { value: "yes", label: "Yes" },
+                        { value: "no", label: "No" },
+                    ]}
+                    onChange={handleExperienceChange}
+                />
+                <RadioGroupField
+                    label="Is this a charity project initiative?"
                     name="experience-radio-btn-group"
                     options={[
                         { value: "yes", label: "Yes" },
@@ -222,4 +305,4 @@ const ProjectBasicInformation = () => {
     );
 };
 
-export default ProjectBasicInformation;
+export default NewProject1;

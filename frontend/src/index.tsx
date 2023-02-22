@@ -17,6 +17,11 @@ import {
 	Events,
 } from "./pages/Projects/Events";
 
+import {
+	NewProject1,
+} from "./pages/Projects/Build";
+
+
 /*
 import {
 	BasicInformation,
@@ -79,6 +84,16 @@ const router = createBrowserRouter([
 			{
 				path: "operations",
 				element: <ProjectOperations />,
+			},
+		],
+	},
+	{
+		path: "/projects/build",
+		element: <Events />,
+		children: [
+			{
+				path: "newproject1",
+				element: <NewProject1 />,
 			},
 		],
 	},
