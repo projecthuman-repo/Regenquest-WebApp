@@ -23,14 +23,14 @@ const SocialIconContainer = styled.div({
     gap: 20,
     justifyContent: 'center',
 });
-const IconContainer = styled.div({
-    cursor: 'pointer',
+const IconContainer = styled(Button)({
     height: 50,
     minWidth: 50,
     backgroundColor: 'rgb(217, 217, 217)',
     alignItems: 'center',
     justifyContent: 'center',
     display: 'flex',
+    color: 'black',
 });
 const FacebookIconStyle = styled(RiFacebookFill)({
     height: 50,
@@ -118,15 +118,20 @@ const ButtonNext = styled(Button)({
     paddingRight: 40,
     marginRight: 25,
 });
-const ButtonsContainer = styled.div({
-    width: '100%',
-    display: 'flex',
-    justifyContent: 'end',
-    marginTop: 20,
-    marginRight: 100,
-});
+const ButtonsContainer = styled.div`
+    & :hover.bhEffect {
+        background-color: rgb(233, 233, 233);
+        color: black;
+    }
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    margin-top: 20px;
+    margin-right: 100px;
+`;
 function SignUp() {
     const navigate = useNavigate();
+
     //SignUp details
     const [formValues, setFormValues] = useState(defaultValues);
     const handleInputChange = (e: { target: { name: any; value: any } }) => {
@@ -136,6 +141,9 @@ function SignUp() {
             ...formValues,
             [name]: value,
         });
+        if (name === 'email') {
+            localStorage.setItem('email', value);
+        }
         console.log(formValues);
     };
     return (
@@ -143,12 +151,7 @@ function SignUp() {
             <ProgressBar index={0} />
             <ButtonsContainer>
                 <ButtonBack
-                    sx={{
-                        ':hover': {
-                            bgcolor: 'rgb(233, 233, 233)',
-                            color: 'black',
-                        },
-                    }}
+                    className='bhEffect'
                     onClick={() => {
                         navigate('/Login');
                     }}
@@ -156,14 +159,9 @@ function SignUp() {
                     {'<'} Back
                 </ButtonBack>
                 <ButtonNext
+                    className='bhEffect'
                     variant='contained'
                     disableElevation
-                    sx={{
-                        ':hover': {
-                            bgcolor: 'rgb(233, 233, 233)',
-                            color: 'black',
-                        },
-                    }}
                     onClick={() => {
                         navigate('/Verification');
                     }}
@@ -175,16 +173,44 @@ function SignUp() {
                 <Text>Sign up with social media</Text>
 
                 <SocialIconContainer>
-                    <IconContainer>
+                    <IconContainer
+                        sx={{
+                            ':hover': {
+                                bgcolor: 'rgb(233, 233, 233)',
+                                color: 'black',
+                            },
+                        }}
+                    >
                         <FacebookIconStyle />
                     </IconContainer>
-                    <IconContainer>
+                    <IconContainer
+                        sx={{
+                            ':hover': {
+                                bgcolor: 'rgb(233, 233, 233)',
+                                color: 'black',
+                            },
+                        }}
+                    >
                         <InstagramIconStyle />
                     </IconContainer>
-                    <IconContainer>
+                    <IconContainer
+                        sx={{
+                            ':hover': {
+                                bgcolor: 'rgb(233, 233, 233)',
+                                color: 'black',
+                            },
+                        }}
+                    >
                         <TwitterIconStyle />
                     </IconContainer>
-                    <IconContainer>
+                    <IconContainer
+                        sx={{
+                            ':hover': {
+                                bgcolor: 'rgb(233, 233, 233)',
+                                color: 'black',
+                            },
+                        }}
+                    >
                         <GoogleIconStyle />
                     </IconContainer>
                 </SocialIconContainer>
@@ -233,7 +259,7 @@ function SignUp() {
                     </LinkStyle>
                 </AlternativeText>
             </SignUpContainer>
-        </Container >
+        </Container>
     );
 }
 

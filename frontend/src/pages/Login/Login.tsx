@@ -125,17 +125,23 @@ const LoginContainer = styled.div({
     gap: '10px',
     minWidth: 380,
 });
-const ButtonStyle = styled(Button)({
-    backgroundColor: 'rgb(217, 217, 217)',
-    variant: 'contained',
-    color: 'black',
-    fontWeight: 510,
-    textTransform: 'none',
-    fontSize: 16,
-    borderRadius: 30,
-    marginTop: 10,
-    marginBottom: 10,
-});
+const ButtonStyle = styled(Button)`
+    background-color: rgb(217, 217, 217);
+    variant: contained;
+    color: black;
+    font-weight: 510px;
+    text-transform: none;
+    font-size: 16px;
+    border-radius: 30px;
+    margin-top: 10px;
+    margin-right: 10px;
+`;
+const ButtonContainer = styled.div`
+    & :hover.bhEffect {
+        background-color: rgb(233, 233, 233);
+        color: black;
+    }
+`;
 const BoxContainer = styled(Box)({
     minWidth: '100%',
 });
@@ -150,14 +156,14 @@ const SocialIconContainer = styled.div({
     gap: 20,
     justifyContent: 'center',
 });
-const IconContainer = styled.div({
-    cursor: 'pointer',
+const IconContainer = styled(Button)({
+    display: 'flex',
     height: 50,
     minWidth: 50,
     backgroundColor: 'rgb(217, 217, 217)',
     alignItems: 'center',
     justifyContent: 'center',
-    display: 'flex',
+    color: 'black',
 });
 const FacebookIconStyle = styled(RiFacebookFill)({
     minWidth: 40,
@@ -190,19 +196,20 @@ const LinkStyle = styled(link)({
     textDecoration: 'none',
 });
 
-
 function getWindowDimensions() {
     const { innerWidth: width, innerHeight: height } = window;
     return {
         width,
-        height
+        height,
     };
 }
 const Login = () => {
     const navigate = useNavigate();
-    const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions());
+    const [windowDimensions, setWindowDimensions] = useState(
+        getWindowDimensions()
+    );
 
-    // listens to window resize event and sets the state for windowdimensions 
+    // listens to window resize event and sets the state for windowdimensions
     useEffect(() => {
         function handleResize() {
             setWindowDimensions(getWindowDimensions());
@@ -220,23 +227,24 @@ const Login = () => {
     const handleClickShowPassword = () => setShowPassword((show) => !show);
     const handleInputChange = (e: { target: { name: any; value: any } }) => {
         const { name, value } = e.target;
-        console.log(value);
         setFormValues({
             ...formValues,
             [name]: value,
         });
-        console.log(formValues);
     };
     return (
         <Container>
-            {windowDimensions.width < 1536 ? (<Fragment></Fragment>) : (
+            {windowDimensions.width < 1483 ? (
+                <Fragment></Fragment>
+            ) : (
                 <Fragment>
                     <BallStyle1 />
                     <BallStyle2 />
                     <BallStyle3 />
                     <SideArrow />
                     <UpArrow />
-                </Fragment>)}
+                </Fragment>
+            )}
             <CardStyle>
                 <CompanyLogo>
                     <Text>Regenquest Logo</Text>
@@ -276,22 +284,19 @@ const Login = () => {
                             onChange={handleInputChange}
                         />
                     </FormControl>
-                    <ButtonStyle
-                        variant='contained'
-                        sx={{
-                            ':hover': {
-                                bgcolor: 'rgb(233, 233, 233)',
-                                color: 'black',
-                            },
-                        }}
-                        disableElevation
-                        onClick={() => {
-                            console.log(formValues);
-                            navigate('/verification');
-                        }}
-                    >
-                        Sign in
-                    </ButtonStyle>
+                    <ButtonContainer>
+                        <ButtonStyle
+                            className='bhEffect'
+                            variant='contained'
+                            disableElevation
+                            onClick={() => {
+                                console.log(formValues);
+                                navigate('/VerifyUserLogin');
+                            }}
+                        >
+                            Sign in
+                        </ButtonStyle>
+                    </ButtonContainer>
                     <BoxContainer>
                         <DividerStyle
                             sx={{
@@ -304,16 +309,44 @@ const Login = () => {
                         </DividerStyle>
                     </BoxContainer>
                     <SocialIconContainer>
-                        <IconContainer>
+                        <IconContainer
+                            sx={{
+                                ':hover': {
+                                    bgcolor: 'rgb(233, 233, 233)',
+                                    color: 'black',
+                                },
+                            }}
+                        >
                             <FacebookIconStyle />
                         </IconContainer>
-                        <IconContainer>
+                        <IconContainer
+                            sx={{
+                                ':hover': {
+                                    bgcolor: 'rgb(233, 233, 233)',
+                                    color: 'black',
+                                },
+                            }}
+                        >
                             <TwitterIconStyle />
                         </IconContainer>
-                        <IconContainer>
+                        <IconContainer
+                            sx={{
+                                ':hover': {
+                                    bgcolor: 'rgb(233, 233, 233)',
+                                    color: 'black',
+                                },
+                            }}
+                        >
                             <InstagramIconStyle />
                         </IconContainer>
-                        <IconContainer>
+                        <IconContainer
+                            sx={{
+                                ':hover': {
+                                    bgcolor: 'rgb(233, 233, 233)',
+                                    color: 'black',
+                                },
+                            }}
+                        >
                             <GoogleIconStyle />
                         </IconContainer>
                     </SocialIconContainer>
@@ -332,13 +365,6 @@ const Login = () => {
                 </LoginContainer>
             </CardStyle>
         </Container>
-
-
-
-
-
-
-
     );
 };
 

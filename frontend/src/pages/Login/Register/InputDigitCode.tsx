@@ -1,15 +1,9 @@
-import { Button, Typography } from '@mui/material';
+import { Button, TextField, Typography } from '@mui/material';
 import styled from '@emotion/styled';
 import { useCallback, useEffect, useState } from 'react';
 import link from '@mui/material/Link';
 import { useNavigate } from 'react-router-dom';
 import ProgressBar from '../../../components/ProgressBar/index';
-
-const AlternativeText = styled.div({
-    marginTop: 55,
-    fontSize: '15px',
-    fontWeight: 650,
-});
 const ButtonBack = styled(Button)({
     color: 'black',
     fontWeight: 700,
@@ -44,11 +38,6 @@ const ButtonsContainer = styled.div`
     margin-top: 20px;
     margin-right: 100px;
 `;
-const LinkStyle = styled(link)({
-    cursor: 'pointer',
-    color: 'rgb(0, 131, 252)',
-    textDecoration: 'none',
-});
 const Container = styled.div({
     display: 'flex',
     alignItems: 'center',
@@ -57,45 +46,47 @@ const Container = styled.div({
     flexDirection: 'column',
     textAlign: 'center',
 });
-const VerifyContainer = styled.div({
+const PrivacyContainer = styled.div({
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
-    width: 600,
-    marginTop: 50,
+    width: 500,
+    marginTop: 45,
+});
+const Text = styled(Typography)({
+    fontFamily: 'Poppins',
+    fontSize: '15px',
+    lineHeight: '18px',
+    fontWeight: 400,
+    color: '#000000',
 });
 const Text2 = styled(Typography)({
+    fontFamily: 'Poppins',
+    fontSize: '17px',
+    lineHeight: '18px',
+    fontWeight: 500,
+    color: '#000000',
+});
+const Text3 = styled(Typography)({
     fontFamily: 'Poppins',
     fontSize: '15px',
     lineHeight: '18px',
     fontWeight: 400,
     color: '#000000',
     marginTop: 20,
+    marginBottom: 30,
 });
-const Verification = () => {
-    const [, updateState] = useState(false);
-    let email = localStorage.getItem('email');
-    const forceUpdate = useCallback(() => updateState(true), [email]);
-    console.log(email);
-    const defaultEmail = 'John@example.com';
-    const original = email ? email : defaultEmail;
-
-    //
-
-    //hides a certain number of characters in the email address
-    const emailParse = () => {
-        let result = '';
-        for (let i = 0; i < original.length; i++) {
-            if (i < 3) {
-                result += '*';
-            } else {
-                result += original[i];
-            }
-        }
-        return result;
-    };
+const Text4 = styled(Typography)({
+    fontFamily: 'Poppins',
+    fontSize: '23px',
+    lineHeight: '18px',
+    fontWeight: 600,
+    color: '#000000',
+    marginTop: 20,
+    marginBottom: 30,
+});
+const InputDigitCode = () => {
     const navigate = useNavigate();
-
     return (
         <Container>
             <ProgressBar index={0} />
@@ -103,7 +94,7 @@ const Verification = () => {
                 <ButtonBack
                     className='bhEffect'
                     onClick={() => {
-                        navigate('/Register');
+                        navigate('/ImproveYourPrivacy');
                     }}
                 >
                     {'<'} Back
@@ -113,32 +104,32 @@ const Verification = () => {
                     variant='contained'
                     disableElevation
                     onClick={() => {
-                        navigate('/ImproveYourPrivacy');
+                        navigate('/ConnectToSocial');
                     }}
                 >
                     Next
                 </ButtonNext>
             </ButtonsContainer>
-            <VerifyContainer>
-                <h2>Verify your account.</h2>
-
+            <PrivacyContainer>
+                <Text4>Improve your privacy.</Text4>
                 <Text2>
-                    A confirmation email has been sent to {emailParse()}.
-                    <br /> Click the link to confirm your account.
+                    Opt in to 2 factor authentication to ensure your <br />{' '}
+                    account is secure.
                 </Text2>
-                <AlternativeText>
-                    Didn't recieve an email?{' '}
-                    <LinkStyle
-                        onClick={() => {
-                            navigate('/EmailSendAgain');
-                        }}
-                    >
-                        Send again.
-                    </LinkStyle>
-                </AlternativeText>
-            </VerifyContainer>
+                <Text3>Enter the 4-digit code sent to your phone number.</Text3>
+                <TextField
+                    sx={{
+                        width: 300,
+                        marginLeft: 13,
+                    }}
+                    id='4digitcode'
+                    name='4DigitCode'
+                    label='4-digit code'
+                    placeholder='1111'
+                />
+            </PrivacyContainer>
         </Container>
     );
 };
 
-export default Verification;
+export default InputDigitCode;
